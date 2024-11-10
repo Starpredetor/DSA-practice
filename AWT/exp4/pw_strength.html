@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Password Strength Indicator
+    </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<h2>Password Strength</h2>
+<input type="password" id="password">
+<p id="strengthMessage"></p>
+<script>
+    $(document).ready(function(){
+        $('#password').on('input', function() {
+            var password = $(this).val();
+            var strengthMessage = $('#strengthMessage');
+
+            if (password.length < 6) {
+                strengthMessage.text('Weak').removeClass().addClass('weak');
+            } else if (password.match(/[a-z]/i) && password.match(/[0-9]/) ) {
+                strengthMessage.text('Strong').removeClass().addClass('strong');
+
+            } else {
+                strengthMessage.text('Moderate').removeClass().addClass('medium');
+            }
+        }
+    ) 
+    });
+</script>
